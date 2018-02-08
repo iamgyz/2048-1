@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <title>2048!</title>
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    
+    <style>
+        h1{
+            padding: 
+        }
+        .row{
+            display: flex;
+        }
+        .col{
+            height:50px;
+            width: 50px;
+            background-color: antiquewhite;
+            text-align: center;
+            border: solid azure;
+        }
+    </style>
+</head>
+<body>
+    <h1>Let's Play 2048!</h1>
+    <div class="box">
+        <div class="row row0">
+            <div class="col col0"></div>
+            <div class="col col1"></div>
+            <div class="col col2"></div>
+            <div class="col col3"></div>
+        </div>
+
+        <div class="row row2">
+            <div class="col col0"></div>
+            <div class="col col1"></div>
+            <div class="col col2"></div>
+            <div class="col col3"></div>
+        </div>
+
+        <div class="row row3">
+            <div class="col col0"></div>
+            <div class="col col1"></div>
+            <div class="col col2"></div>
+            <div class="col col3"></div>
+        </div>
+
+        <div class="row row4">
+            <div class="col col0"></div>
+            <div class="col col1"></div>
+            <div class="col col2"></div>
+            <div class="col col3"></div>
+        </div>
+    </div>
+    
+    <script>
+        
+    function choose(choices) {
+        var index = Math.floor(Math.random() * choices.length);
+        return choices[index];
+    };
+        
+    $('.col').html('');
+    $(window).ready(()=>{
+            let some = choose([2,4]);
+            //$('.row'+rand4()).children('.col'+rand4()).html(some);
+            $('.row .col').eq(Math.floor(Math.random()*16)).html(some);
+            
+        }
+    );
+    </script>
+</body>
