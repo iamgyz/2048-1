@@ -1,7 +1,8 @@
     let myBlock = [ [0,0,0,0],
                     [0,0,0,0],
-                    [0,0,0,0],
+                    [4,2,4,0],
                     [0,0,0,0]];
+    let moveTag = 0;
      /*               
     let myBlock = [ [0,2,4,8],
                     [2,0,0,0],
@@ -45,22 +46,61 @@
             i = Math.floor(Math.random()*4);
             j = Math.floor(Math.random()*4);
           }
-          myBlock[i][j]=choose([2,2,2]);
+          myBlock[i][j]=choose([2,2,2,4,2,2,2]);
           render();
         }
     };
 
     const render = ()=>{
       for(let i=0;i<4;i++){
-        for(let j=0;j<4;j++){
+        for(let j=0;j<4;j++){          
+          let button = $('.row'+i+' .col'+j);
           if(myBlock[i][j]){
-          $('.row'+i+' .col'+j).text(myBlock[i][j]);
-          }else{
-          $('.row'+i+' .col'+j).text('');
+            button.text(myBlock[i][j]);
           }
+          else{
+            button.text('');
+          }
+          //render
+          switch(myBlock[i][j]){
+              case 0:
+                button.css({'background-color':'Beige'});
+                break;
+              case 2: 
+                button.css({'background-color':'antiquewhite '});
+                break;
+              case 4:
+                button.css({'background-color':'BurlyWood  '});
+                break;
+              case 8:
+                button.css({'background-color':'Coral  '});
+                break;
+              case 16:
+                button.css({'background-color':'Cyan  '});
+                break;
+              case 32:
+                button.css({'background-color':'DarkOrange  '});
+                break;
+              case 64:
+                button.css({'background-color':'DeepSkyBlue  '});
+                break;
+              case 128:
+                button.css({'background-color':'FloralWhite  '});
+                break;
+              case 256:
+                button.css({'background-color':'Gold  '});
+                break;
+              case 512:
+                button.css({'background-color':'GoldenRod  '});
+                break;
+              case 1024:
+                button.css({'background-color':'HotPink  '});
+                alert('You are win!');
+                break;
         }
       }
     }
+  }
 
     const merge = dir=>{
       //dir=1 merge forward
@@ -71,6 +111,8 @@
           for(let j=3;j>0;j--){
             if(myBlock[i][j]===0) continue;
             for(let k=j-1;k>=0;k--){
+              if(myBlock[i][k]===0) continue;
+              if(myBlock[i][j]!==myBlock[i][k]) break;
               if(myBlock[i][j]===myBlock[i][k]){
                 console.log('merge')
                 console.log('locate : i='+i+' j='+j);
@@ -87,6 +129,8 @@
           for(let j=0;j<3;j++){            
             if(myBlock[i][j]===0) continue;
             for(let k=j+1;k<=3;k++){
+              if(myBlock[i][k]===0) continue;
+              if(myBlock[i][j]!==myBlock[i][k]) break;
               if(myBlock[i][j]===myBlock[i][k]){
                 console.log('merge')
                 console.log('locate: i='+i+' j='+j);
@@ -102,6 +146,8 @@
     }
 
     const move = dir=>{
+      let temp = myBlock;
+
       if(dir===1){
         for(let i=0;i<4;i++){
           for(let j=3;j>0;j--){
@@ -126,10 +172,11 @@
             }
           }
       }
-    };
+    }
     }
     $(window).ready(pop());
     
+
     $(document).keyup(event=>{
     switch(event.keyCode){
       case 38:
@@ -154,7 +201,7 @@
         console.log("left");
         merge(2);
         move(2);
-        render()
+        render();
         pop();
         break;
       case 39:
