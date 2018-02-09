@@ -23,28 +23,31 @@
         
     })
     //Global listen keydown;
-        
-        
-        
+
+    let myBlock = Array.from(Array(16).keys())    ;
+            
     function choose(choices) {
         var index = Math.floor(Math.random() * choices.length);
         return choices[index];
-    }
-        
-        
-        
+    };
+    
+    function randomBlock(leftover){
+
+    };
+
+
     const initial = ()=>{
             //$('.col').html('');
-            let some = choose([2,4]);
+            let some = choose([2,2,2,4]);
             //$('.row'+rand4()).children('.col'+rand4()).html(some);
-            $('.row .col').eq(Math.floor(Math.random()*16)).text(some);
+            $('.row .col').eq(Math.floor(Math.random()*16)).text(some).addClass('flag');
         };
 
         
     const main = ()=>{
         initial();
         
-    }
+    };
     
     
     $(window).ready(
