@@ -1,6 +1,6 @@
     let myBlock = [ [0,0,0,0],
                     [0,0,0,0],
-                    [4,2,4,0],
+                    [0,0,0,0],
                     [0,0,0,0]];
     let moveTag = 0;
      /*               
@@ -95,7 +95,10 @@
                 break;
               case 1024:
                 button.css({'background-color':'HotPink  '});
-                alert('You are win!');
+                //alert('You are win!');
+                break;
+              default:
+                button.css({'background-color':'Beige'});
                 break;
         }
       }
