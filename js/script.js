@@ -1,17 +1,22 @@
-    //Global listen keydown;
-
     let myBlock = [ [0,0,0,0],
                     [0,0,0,0],
                     [0,0,0,0],
                     [0,0,0,0]];
-            
+     /*               
+    let myBlock = [ [0,2,4,8],
+                    [2,0,0,0],
+                    [4,0,4,0],
+                    [8,0,2,0]];
+                    */
+                      
     function choose(choices) {
         var index = Math.floor(Math.random() * choices.length);
         return choices[index];
     };
 
     function transpose(array){
-      array[0].map((col, i) => array.map(row => row[i]));
+      let res = array[0].map((col, i) => array.map(row => row[i]));
+      myBlock = res;
     }
     
     function checkfull(){
@@ -40,7 +45,7 @@
             i = Math.floor(Math.random()*4);
             j = Math.floor(Math.random()*4);
           }
-          myBlock[i][j]=choose([2,2,2,4]);
+          myBlock[i][j]=choose([2,2,2]);
           render();
         }
     };
@@ -105,6 +110,7 @@
               if(myBlock[i][k]===0) continue;
               myBlock[i][j]=myBlock[i][k];
               myBlock[i][k]=0;
+              break;
             }
           }
         }
@@ -116,6 +122,7 @@
               if(myBlock[i][k]===0) continue;
               myBlock[i][j]=myBlock[i][k];
               myBlock[i][k]=0;
+              break;
             }
           }
       }
@@ -127,11 +134,9 @@
     switch(event.keyCode){
       case 38:
         console.log('up');
-
         transpose(myBlock);
         merge(2);
         move(2);
-
         transpose(myBlock);
         render();
         pop();
@@ -142,6 +147,7 @@
         merge(1);
         move(1);
         transpose(myBlock);
+        render();
         pop();
         break;
       case 37:
@@ -160,6 +166,7 @@
         break;
       case 32:
         transpose(myBlock);
+        render()
         console.log(myBlock);
         break;
     }
