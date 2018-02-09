@@ -177,9 +177,23 @@
       }
     }
     }
-    $(window).ready(pop());
-    
 
+    function main(){
+      let size;
+      if(innerWidth>innerHeight){size = innerHeight
+      }else{size = innerWidth}
+
+      $('.bigBox').css({'width':size+'px','height':size+'px'});
+
+      console.log(size);
+      pop();
+    }
+
+
+    $(window).ready(
+        main()
+      );
+    
     $(document).keyup(event=>{
     switch(event.keyCode){
       case 38:
