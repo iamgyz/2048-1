@@ -182,9 +182,12 @@
       let size;
       if(innerWidth>innerHeight){size = innerHeight
       }else{size = innerWidth}
+    //   $('.bigBox').css({'width':size+'px','height':size+'px'});
 
-      $('.bigBox').css({'width':size+'px','height':size+'px'});
-
+      size-=50;
+      $('bigBox').css({'width':size+'px','height':'auto'});
+     // $('h1').css({'width':size+'px','height':'auto'});
+      //$('.box').css({'width':size+'px','height':'auto'});
       console.log(size);
       pop();
     }
