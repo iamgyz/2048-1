@@ -9,6 +9,10 @@
         var index = Math.floor(Math.random() * choices.length);
         return choices[index];
     };
+
+    function transpose(array){
+      array[0].map((col, i) => array.map(row => row[i]));
+    }
     
     function checkfull(){
       //check full
@@ -122,24 +126,41 @@
     $(document).keyup(event=>{
     switch(event.keyCode){
       case 38:
-      console.log('up');
-      render();
+        console.log('up');
+
+        transpose(myBlock);
+        merge(2);
+        move(2);
+
+        transpose(myBlock);
+        render();
+        pop();
         break;
       case 40:
-       alert("down");
+        console.log("down");
+        transpose(myBlock);
+        merge(1);
+        move(1);
+        transpose(myBlock);
+        pop();
         break;
       case 37:
-       console.log("left");
-       merge(2);
-       move(2);
+        console.log("left");
+        merge(2);
+        move(2);
+        render()
+        pop();
         break;
       case 39:
-       console.log("right");
-       merge(1);
-       move(1);
+        console.log("right");
+        merge(1);
+        move(1);
+        render();
+        pop();
         break;
       case 32:
-        pop();
+        transpose(myBlock);
+        console.log(myBlock);
         break;
     }
     })
