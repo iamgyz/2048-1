@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>2048!</title>
-    <script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-    
-    <style>
-        h1{
-            padding: 
-        }
-        .row{
-            display: flex;
-        }
-        .col{
-            height:50px;
-            width: 50px;
-            background-color: antiquewhite;
-            text-align: center;
-            border: solid azure;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/gamebox.css" />
 </head>
 <body>
     <h1>Let's Play 2048!</h1>
@@ -54,61 +35,10 @@
         </div>
     </div>
     
-    <script>
-
-    /*    function pop(){
-        while(true){
-            $('.row .col').eq(Math.floor(Math.random()*16)).html();
-        }
-    }*/
-        
-    $(document).keydown(event=>{
-        switch(event.keyCode){
-          case 38:
-           alert("top");
-            break;
-          case 40:
-           alert("down");
-            break;
-          case 37:
-           alert("left");
-            break;
-          case 39:
-           alert("right");
-            break;
-        }
-        
-    })
-    //Global listen keydown;
-        
-        
-        
-    function choose(choices) {
-        var index = Math.floor(Math.random() * choices.length);
-        return choices[index];
-    }
-        
-        
-        
-    const initial = ()=>{
-            //$('.col').html('');
-            let some = choose([2,4]);
-            //$('.row'+rand4()).children('.col'+rand4()).html(some);
-            $('.row .col').eq(Math.floor(Math.random()*16)).text(some);
-        };
-
-        
-    const main = ()=>{
-        initial();
-        
-    }
-    
-    
-    $(window).ready(
-        main()
-    
-    );
-    
-    
-    </script>
+    <!--jquery & some script-->
+    <script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
 </body>
