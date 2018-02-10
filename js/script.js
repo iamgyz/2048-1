@@ -22,6 +22,25 @@
       return true;
     }
 
+    function checkTheEnd(){
+      for(let i=0;i<4;i++){
+        for(let j=0;j<3;j++){
+          if(myBlock[i][j]===myBlock[i][j+1]){
+            return false;
+          }
+        }
+      }
+      for(let j=0;j<4;j++){
+        for(let i=0;i<3;i++){
+          if(myBlock[i][j]===myBlock[i+1][j]){
+            return false;
+          }
+        }
+      }
+      console.log('GameOver!');
+      return true;
+    }
+
     function choose(choices) {
         var index = Math.floor(Math.random() * choices.length);
         return choices[index];
@@ -34,14 +53,16 @@
     
     function checkfull(){
       //check full
-      let full = true;
       for(let i=0;i<4;i++){
         for(let j=0;j<4;j++){
           if(myBlock[i][j]===0){
-            full=false;
             return false;
           }
         }
+      }
+      if(checkTheEnd()){
+        confirm('You lose!');
+        location.reload();
       }
 //      console.log('Is that full?'+full);
       return true;
@@ -61,6 +82,7 @@
           myBlock[i][j]=choose([2,2,2,4,2,2,2]);
           render();
         }
+        checkfull();
     };
 
     const render = ()=>{
@@ -204,8 +226,13 @@
 
     function main(){
       let size;
-      if(innerWidth>innerHeight){size = innerHeight
-      }else{size = innerWidth}
+      if(innerWidth>innerHeight){
+        size = innerHeight
+      }else{
+        //$('h1').css('font-size',(innerHeight-innerWidth)/2)
+        $('.bigBox').height(innerHeight);
+        size = innerWidth
+      }
     //   $('.bigBox').css({'width':size+'px','height':size+'px'});
 
       size-=120;
