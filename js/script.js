@@ -261,10 +261,8 @@
       );
     
     let temp;
-    $(document).keyup(event=>{
-    switch(event.keyCode){
-      case 38:
-        console.log('up');
+    const _up = ()=>{
+    	console.log('up');
         temp = myBlock;
         transpose(myBlock);
         merge(2);
@@ -275,9 +273,10 @@
         }else{
           render();
         }
-        break;
-      case 40:
-        console.log("down");
+    }
+
+    const _down = ()=>{
+    	console.log("down");
         temp = myBlock;
         transpose(myBlock);
         merge(1);
@@ -288,11 +287,11 @@
         }else{
           render();
         }
-        break;
-      case 37:
-        console.log("left");
-        temp = myBlock;
+    }
 
+    const _left = ()=>{
+    	console.log("left");
+        temp = myBlock;
         transpose(myBlock);
         transpose(myBlock);
         merge(2);
@@ -304,9 +303,10 @@
         }else{
           render();
         }
-        break;
-      case 39:
-        console.log("right");
+    }
+    
+    const _right = ()=>{
+    	console.log("right");
         temp = myBlock;
         transpose(myBlock);
         transpose(myBlock);
@@ -319,6 +319,20 @@
         }else{
           render();
         }
+    }
+    $(document).keyup(event=>{
+    switch(event.keyCode){
+      case 38:
+        _up();
+        break;
+      case 40:
+      	_down();       
+        break;
+      case 37:
+        _left();
+        break;
+      case 39:
+        _right();
         break;
       case 32:
         transpose(myBlock);
@@ -326,4 +340,19 @@
         console.log(myBlock);
         break;
     }
-    })
+    });
+
+    $('.box').on("swipeleft",function(){
+  		_left();
+	});
+
+	$('.box').on("swiperight",function(){
+  		_right();
+	});
+    $('.box').on("swipeup",function(){
+  		_up();
+	});
+
+	$('.box').on("swipedown",function(){
+  		_down();
+	});
