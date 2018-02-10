@@ -9,20 +9,14 @@ h1{
     display: flex;
 }
 .col{
-    height:50px;
-    width: 50px;
     text-align: center;
-    line-height: 50px;
     border: solid white;
 }
 .box{
 	display:table;
 	margin:auto;    
-	width: 50%;
-    padding: 10px;	
+	width: 50%;	
 }
 .bigBox{
-	margin:0 auto;
-	width:auto;
-	height:auto;
+	text-align: center;
 }

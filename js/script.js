@@ -10,8 +10,8 @@
                     [8,0,2,0]];
                     */
     function checkBox(array1,array2){
-      console.log(array1);
-      console.log(array2);
+      //console.log(array1);
+      //console.log(array2);
       for(let i=0;i<4;i++){
         for(let j=0;j<4;j++){
           if(array1[i][j]!==array2[i][j]){
@@ -103,11 +103,24 @@
                 button.css({'background-color':'Gold  '});
                 break;
               case 512:
-                button.css({'background-color':'GoldenRod  '});
+                button.css({'background-color':'GoldenRod'});
                 break;
               case 1024:
-                button.css({'background-color':'HotPink  '});
+              button.css({
+                  'background-color':'HotPink'
+                });
                 //alert('You are win!');
+                break;
+              case 2048:
+                button.css({
+                  'background-color':'Pink'
+              });
+                
+
+                confirm('歡迎加入光明會');
+                window.open('https://youtu.be/GRWbIoIR04c')
+                location.reload();  
+//                location.reload();
                 break;
               default:
                 button.css({'background-color':'Beige'});
@@ -195,8 +208,18 @@
       }else{size = innerWidth}
     //   $('.bigBox').css({'width':size+'px','height':size+'px'});
 
-      size-=50;
-      $('bigBox').css({'width':size+'px','height':'auto'});
+      size-=120;
+      //let size1 = size-100;
+      $('.box').width(size);
+      $('.box').height(size);
+      //let w = $('.col').width();
+      let w = size/4;
+      $('.col').width(w);
+      $('.col').height(w);
+      $('.col').css('font-size',w*2/5);
+      $('.col').css('font-weight','bold');
+     // $('.col').css('line-height',w+' px')
+      //$('.box').css({'width':size+' px','height':size+' px'});
      // $('h1').css({'width':size+'px','height':'auto'});
       //$('.box').css({'width':size+'px','height':'auto'});
       console.log(size);
@@ -213,7 +236,7 @@
     switch(event.keyCode){
       case 38:
         console.log('up');
-        temp = myBlock.slice();
+        temp = myBlock;
         transpose(myBlock);
         merge(2);
         move(2);
@@ -226,7 +249,7 @@
         break;
       case 40:
         console.log("down");
-        temp = myBlock.slice();
+        temp = myBlock;
         transpose(myBlock);
         merge(1);
         move(1);
@@ -239,7 +262,8 @@
         break;
       case 37:
         console.log("left");
-        temp = myBlock.slice();
+        temp = myBlock;
+
         transpose(myBlock);
         transpose(myBlock);
         merge(2);
@@ -254,7 +278,7 @@
         break;
       case 39:
         console.log("right");
-        temp = myBlock.slice();
+        temp = myBlock;
         transpose(myBlock);
         transpose(myBlock);
         merge(1);
