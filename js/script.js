@@ -9,7 +9,19 @@
                     [4,0,4,0],
                     [8,0,2,0]];
                     */
-                      
+    function checkBox(array1,array2){
+      console.log(array1);
+      console.log(array2);
+      for(let i=0;i<4;i++){
+        for(let j=0;j<4;j++){
+          if(array1[i][j]!==array2[i][j]){
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
     function choose(choices) {
         var index = Math.floor(Math.random() * choices.length);
         return choices[index];
@@ -149,7 +161,6 @@
     }
 
     const move = dir=>{
-      let temp = myBlock;
 
       if(dir===1){
         for(let i=0;i<4;i++){
@@ -174,8 +185,8 @@
               break;
             }
           }
+        }
       }
-    }
     }
 
     function main(){
@@ -197,39 +208,64 @@
         main()
       );
     
+    let temp;
     $(document).keyup(event=>{
     switch(event.keyCode){
       case 38:
         console.log('up');
+        temp = myBlock.slice();
         transpose(myBlock);
         merge(2);
         move(2);
-        transpose(myBlock);
-        render();
-        pop();
+        transpose(myBlock);        
+        if(!checkBox(temp,myBlock)){
+          pop();
+        }else{
+          render();
+        }
         break;
       case 40:
         console.log("down");
+        temp = myBlock.slice();
         transpose(myBlock);
         merge(1);
         move(1);
         transpose(myBlock);
-        render();
-        pop();
+        if(!checkBox(temp,myBlock)){
+          pop();
+        }else{
+          render();
+        }
         break;
       case 37:
         console.log("left");
+        temp = myBlock.slice();
+        transpose(myBlock);
+        transpose(myBlock);
         merge(2);
         move(2);
-        render();
-        pop();
+        transpose(myBlock);
+        transpose(myBlock);
+        if(!checkBox(temp,myBlock)){
+          pop();
+        }else{
+          render();
+        }
         break;
       case 39:
         console.log("right");
+        temp = myBlock.slice();
+        transpose(myBlock);
+        transpose(myBlock);
         merge(1);
         move(1);
-        render();
-        pop();
+        transpose(myBlock);
+        transpose(myBlock);
+        if(!checkBox(temp,myBlock)){
+          pop();
+        }else{
+          render();
+        }
         break;
       case 32:
         transpose(myBlock);
