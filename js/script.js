@@ -226,7 +226,7 @@
     }
 
     function main(){
-      $('img').remove();
+      //$('img').remove();
       let size;
       if(innerWidth>innerHeight){
         size = innerHeight
