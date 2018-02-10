@@ -61,8 +61,9 @@
         }
       }
       if(checkTheEnd()){
-        confirm('You lose!');
+        confirm('你輸了!呵呵 我們不一樣');
         location.reload();
+        window.open('https://youtu.be/ekDzlSB1p28')
       }
 //      console.log('Is that full?'+full);
       return true;
